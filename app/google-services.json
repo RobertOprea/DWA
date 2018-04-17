@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "368283495905-uod4gvk62hbpk1pmtn15n0l802lgnkj2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dwa.rybridge.ryebridgedwa",
+            "certificate_hash": "d5b4a04d3dee25d0fbc91799e4c3e48fe02491a6"
+          }
+        },
+        {
           "client_id": "368283495905-tsn8jk6i5psnft3hq00jgntnak89rpf4.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368283495905-5tr6k1usgpvur2miuiudee7bueprl9rj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "xoom.XoomDWB"
+              }
+            },
+            {
+              "client_id": "368283495905-tsn8jk6i5psnft3hq00jgntnak89rpf4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
