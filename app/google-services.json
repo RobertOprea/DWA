@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "368283495905",
+    "firebase_url": "https://xoomdwb.firebaseio.com",
+    "project_id": "xoomdwb",
+    "storage_bucket": "xoomdwb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368283495905:android:e835b82bfe6399dc",
+        "android_client_info": {
+          "package_name": "com.dwa.rybridge.ryebridgedwa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368283495905-tsn8jk6i5psnft3hq00jgntnak89rpf4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIOHmGQ9aQ9phRBvPG4Yfa3_TrXPLcRDI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368283495905:android:18cebe7367d57627",
+        "android_client_info": {
+          "package_name": "com.dwa.ryebridge.ryebridgedwa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368283495905-tsn8jk6i5psnft3hq00jgntnak89rpf4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIOHmGQ9aQ9phRBvPG4Yfa3_TrXPLcRDI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
