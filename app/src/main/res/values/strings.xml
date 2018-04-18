@@ -5,4 +5,8 @@
     <string name="sign_in">Sign In</string>
     <string name="forgot_password">Forgot your password</string>
     <string name="register">Register a new user</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="repeat_new_password">Repeat New Password</string>
+    <string name="change_password">Change Password</string>
 </resources>

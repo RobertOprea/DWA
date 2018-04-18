@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.data.User;
+import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.LoginPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.LoginPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.LoginView;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     EditText passwordEditText;
 
     private LoginPresenter loginPresenter;
+    private Navigator navigator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,8 +47,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
         ButterKnife.bind(this);
 
-        loginPresenter = new LoginPresenterImpl(this);
-        loginPresenter.initialise();
+        initNavigator();
+        inintPresenter();
+    }
+
+    @Override
+    public void displayToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.sign_in_link_textview)
@@ -57,8 +64,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         loginPresenter.onLoginClicked(email, password);
     }
 
-    @Override
-    public void displayToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    @OnClick(R.id.forgot_password_link_textview)
+    public void onForgotPasswordClicked() {
+        navigator.navigateToChangePasswordScreen();
+    }
+
+    private void initNavigator() {
+        navigator = Navigator.getInstance();
+        navigator.setSourceActivity(this);
+    }
+
+    private void inintPresenter() {
+        loginPresenter = new LoginPresenterImpl(this);
+        loginPresenter.initialise();
     }
 }
