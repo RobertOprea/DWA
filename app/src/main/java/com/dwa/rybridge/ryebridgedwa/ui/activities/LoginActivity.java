@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @OnClick(R.id.forgot_password_link_textview)
     public void onForgotPasswordClicked() {
-        navigator.navigateToChangePasswordScreen();
+        loginPresenter.onForgotPasswordClicked(emailEditText.getText().toString());
     }
 
     private void initNavigator() {
