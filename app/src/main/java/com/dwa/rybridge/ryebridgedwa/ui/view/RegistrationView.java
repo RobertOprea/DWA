@@ -15,4 +15,6 @@ public interface RegistrationView {
     String getRepeatPassword();
 
     String getAccessCode();
+
+    void displayToastMessage(String message);
 }
