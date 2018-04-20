@@ -69,6 +69,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         loginPresenter.onForgotPasswordClicked(emailEditText.getText().toString());
     }
 
+    @OnClick(R.id.register_user_link_textview)
+    public void onRegisterNewUserClicked() {
+        navigator.navigateToRegistrationActivity();
+    }
+
     private void initNavigator() {
         navigator = Navigator.getInstance();
         navigator.setSourceActivity(this);
