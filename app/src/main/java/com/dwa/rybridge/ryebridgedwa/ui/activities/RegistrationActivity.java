@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dwa.rybridge.ryebridgedwa.R;
+import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.RegistrationPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.RegistrationPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.RegistrationView;
@@ -33,6 +34,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     EditText accessCodeEditText;
 
     private RegistrationPresenter presenter;
+    private Navigator navigator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         ButterKnife.bind(this);
 
         initPresenter();
+
+        navigator = Navigator.getInstance();
+        navigator.setSourceActivity(this);
     }
 
     private void initPresenter() {
@@ -88,6 +93,11 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     @Override
     public void displayToastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void navigateToPolictiesActivity() {
+        navigator.navigateToPoliciesActivity();
     }
 
     @OnClick(R.id.register_button)

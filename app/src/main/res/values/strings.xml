@@ -23,4 +23,9 @@
     <string name="access_code">Access Code</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="register">Register</string>
+
+    <!--Policies screen strings-->
+    <string name="induction_acceptance">I have received a Ryebridge safety induction</string>
+    <string name="policies_acceptance">I agree to abide by all of the above policies</string>
+    <string name="next">Next</string>
 </resources>

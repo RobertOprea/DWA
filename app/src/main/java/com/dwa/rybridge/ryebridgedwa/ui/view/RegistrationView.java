@@ -17,4 +17,6 @@ public interface RegistrationView {
     String getAccessCode();
 
     void displayToastMessage(String message);
+
+    void navigateToPolictiesActivity();
 }

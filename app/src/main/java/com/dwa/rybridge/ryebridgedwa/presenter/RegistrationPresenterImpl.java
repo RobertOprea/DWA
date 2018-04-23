@@ -107,7 +107,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
 
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            registrationView.displayToastMessage("Registration complete!");
+            registrationView.navigateToPolictiesActivity();
         }
 
         @Override
