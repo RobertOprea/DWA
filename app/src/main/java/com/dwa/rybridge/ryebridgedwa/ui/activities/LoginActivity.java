@@ -74,6 +74,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         navigator.navigateToRegistrationActivity();
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     private void initNavigator() {
         navigator = Navigator.getInstance();
         navigator.setSourceActivity(this);
