@@ -22,7 +22,8 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
     private RegisterData registerData;
 
     private RegistrationView registrationView;
-    private String userId;
+    private DatabaseReference userDBReference;
+    private DataUploadValueListener dataUploadValueListener;
 
     public RegistrationPresenterImpl(RegistrationView registrationView) {
         this.registrationView = registrationView;
@@ -32,6 +33,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
     public void initialise() {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
+        dataUploadValueListener = new DataUploadValueListener();
     }
 
     @Override
@@ -75,11 +77,11 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
     //TODO Should consider extracting this into a usecase
     private void uploadData() {
         String userId = firebaseAuth.getUid();
-        DatabaseReference userDBReference = firebaseDatabase.getReference().child("userData").child(userId);
+        userDBReference = firebaseDatabase.getReference().child("userData").child(userId);
         userDBReference.child("name").setValue(registerData.getFirstName() + " " + registerData.getLastName());
         userDBReference.child("email").setValue(registerData.getEmailAddress());
         userDBReference.child("phone").setValue(registerData.getMobileNumber());
-        userDBReference.addValueEventListener(new DataUploadValueListener());
+        userDBReference.addValueEventListener(dataUploadValueListener);
     }
 
     //TODO Should consider moving it as a separate class
@@ -108,6 +110,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             registrationView.navigateToPolictiesActivity();
+            userDBReference.removeEventListener(this);
         }
 
         @Override
