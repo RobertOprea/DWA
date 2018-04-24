@@ -57,7 +57,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
     }
 
     private void startRegister() {
-        firebaseDatabase.getReference().child("accessCode").addValueEventListener(new AccessCodeValueListener());
+        firebaseDatabase.getReference().child("accessCode").addListenerForSingleValueEvent(new AccessCodeValueListener());
     }
 
     //TODO Should consider extracting this into a usecase
@@ -81,7 +81,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
         userDBReference.child("name").setValue(registerData.getFirstName() + " " + registerData.getLastName());
         userDBReference.child("email").setValue(registerData.getEmailAddress());
         userDBReference.child("phone").setValue(registerData.getMobileNumber());
-        userDBReference.addValueEventListener(dataUploadValueListener);
+        userDBReference.addListenerForSingleValueEvent(dataUploadValueListener);
     }
 
     //TODO Should consider moving it as a separate class
