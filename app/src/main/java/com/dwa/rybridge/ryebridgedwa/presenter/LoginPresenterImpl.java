@@ -2,17 +2,24 @@ package com.dwa.rybridge.ryebridgedwa.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.dwa.rybridge.ryebridgedwa.data.User;
 import com.dwa.rybridge.ryebridgedwa.ui.view.LoginView;
 import com.dwa.rybridge.ryebridgedwa.validator.EmailValidator;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginPresenterImpl implements LoginPresenter {
 
     private LoginView view;
     private FirebaseAuth auth;
+    private FirebaseDatabase firebaseDatabase;
 
     public LoginPresenterImpl(LoginView view) {
         this.view = view;
@@ -21,6 +28,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     public void initialise() {
         auth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
     @Override
@@ -29,7 +37,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    view.displayToast("Login successful!");
+                    checkPoliciesAcceptance();
                 } else {
                     view.displayToast("Login failed!");
                 }
@@ -53,5 +61,24 @@ public class LoginPresenterImpl implements LoginPresenter {
                 }
             });
         }
+    }
+
+    private void checkPoliciesAcceptance() {
+        firebaseDatabase.getReference().child("userData").child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User loggedInUser = dataSnapshot.getValue(User.class);
+                if (loggedInUser.arePoliciesAccepted()) {
+                    //TODO: navigate to main screen
+                } else {
+                    view.navigateToPoliciesActivity();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

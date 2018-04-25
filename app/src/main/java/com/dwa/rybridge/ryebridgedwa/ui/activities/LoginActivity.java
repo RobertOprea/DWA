@@ -56,6 +56,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void navigateToMainActivity() {
+        //TODO: navigate to main activity
+    }
+
+    @Override
+    public void navigateToPoliciesActivity() {
+        navigator.navigateToPoliciesActivity();
+    }
+
     @OnClick(R.id.sign_in_link_textview)
     public void onLoginClicked() {
         String email = emailEditText.getText().toString();
