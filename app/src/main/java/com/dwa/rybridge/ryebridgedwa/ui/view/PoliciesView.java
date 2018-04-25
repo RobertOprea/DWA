@@ -9,4 +9,6 @@ public interface PoliciesView {
     boolean isInductionSwitchChecked();
 
     void setNextButtonVisibility(int visibility);
+
+    void navigateToMainActivity();
 }

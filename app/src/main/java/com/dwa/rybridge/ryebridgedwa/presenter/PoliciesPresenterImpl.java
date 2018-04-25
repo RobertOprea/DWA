@@ -45,7 +45,7 @@ public class PoliciesPresenterImpl implements PoliciesPresenter {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                view.navigateToMainActivity();
             }
 
             @Override

@@ -69,7 +69,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User loggedInUser = dataSnapshot.getValue(User.class);
                 if (loggedInUser.arePoliciesAccepted()) {
-                    //TODO: navigate to main screen
+                    view.navigateToMainActivity();
                 } else {
                     view.navigateToPoliciesActivity();
                 }

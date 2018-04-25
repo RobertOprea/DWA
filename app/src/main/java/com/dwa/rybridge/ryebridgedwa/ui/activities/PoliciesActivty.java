@@ -8,6 +8,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 
 import com.dwa.rybridge.ryebridgedwa.R;
+import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.PoliciesPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.PoliciesPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.PoliciesView;
@@ -28,6 +29,7 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
     @BindView(R.id.next_button)
     Button nextButton;
 
+    private Navigator navigator;
     private PoliciesPresenter presenter;
 
     @Override
@@ -37,6 +39,7 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
 
         ButterKnife.bind(this);
 
+        initNavigator();
         initPresenter();
     }
 
@@ -62,6 +65,11 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
         nextButton.setVisibility(visibility);
     }
 
+    @Override
+    public void navigateToMainActivity() {
+        navigator.navigateToMainActivity();
+    }
+
     @OnCheckedChanged({R.id.policies_switch, R.id.induction_switch})
     public void onSwitchesCheckChanged() {
         presenter.onSwitchesCheckChanged();
@@ -70,6 +78,11 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
     @OnClick(R.id.next_button)
     public void onNextButtonClicked() {
         presenter.onNextButtonClicked();
+    }
+
+    private void initNavigator() {
+        navigator = Navigator.getInstance();
+        navigator.setSourceActivity(this);
     }
 
     private void initPresenter() {

@@ -53,6 +53,6 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     @Override
     public void navigateToMainScreen() {
-        //TODO Implement main screen
+        navigator.navigateToMainActivity();
     }
 }
