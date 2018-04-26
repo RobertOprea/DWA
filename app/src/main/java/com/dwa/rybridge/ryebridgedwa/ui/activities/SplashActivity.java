@@ -9,7 +9,6 @@ import com.dwa.rybridge.ryebridgedwa.ui.view.SplashView;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 public class SplashActivity extends AppCompatActivity implements SplashView {
 
@@ -26,7 +25,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
     }
 
     private void setupNavigator() {
-        navigator = Navigator.getInstance();
+        navigator = Navigator.newInstance();
         navigator.setSourceActivity(this);
     }
 

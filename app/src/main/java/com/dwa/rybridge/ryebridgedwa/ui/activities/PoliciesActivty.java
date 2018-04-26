@@ -81,7 +81,7 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
     }
 
     private void initNavigator() {
-        navigator = Navigator.getInstance();
+        navigator = Navigator.newInstance();
         navigator.setSourceActivity(this);
     }
 

@@ -45,7 +45,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
         initPresenter();
 
-        navigator = Navigator.getInstance();
+        navigator = Navigator.newInstance();
         navigator.setSourceActivity(this);
     }
 

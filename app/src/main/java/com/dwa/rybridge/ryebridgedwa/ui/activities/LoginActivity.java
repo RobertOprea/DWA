@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     }
 
     private void initNavigator() {
-        navigator = Navigator.getInstance();
+        navigator = Navigator.newInstance();
         navigator.setSourceActivity(this);
     }
 

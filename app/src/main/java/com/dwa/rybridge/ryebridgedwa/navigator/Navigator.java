@@ -11,15 +11,10 @@ import com.dwa.rybridge.ryebridgedwa.ui.activities.RegistrationActivity;
 
 public class Navigator {
 
-    private static Navigator instance;
     private Activity sourceActivity;
 
-    public static Navigator getInstance() {
-        if (instance == null) {
-            instance = new Navigator();
-        }
-
-        return instance;
+    public static Navigator newInstance() {
+        return new Navigator();
     }
 
     private Navigator() {
