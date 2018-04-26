@@ -1,8 +1,12 @@
 package com.dwa.rybridge.ryebridgedwa.presenter;
 
+import android.app.Activity;
+
 public interface MainPresenter {
 
-    void initialise();
+    void initialise(Activity activity);
 
     void onSingOutClicked();
+
+    void onPermissionGranted();
 }
