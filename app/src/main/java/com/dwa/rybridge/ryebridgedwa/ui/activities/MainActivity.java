@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter.onSingOutClicked();
     }
 
+    @OnClick(R.id.view_policies_link_textview)
+    public void onViewPoliciesClicked() {
+        navigator.navigateToSimplePoliciesActivity();
+    }
+
     private void initPresenter() {
         presenter = new MainPresenterImpl(this);
         presenter.initialise();

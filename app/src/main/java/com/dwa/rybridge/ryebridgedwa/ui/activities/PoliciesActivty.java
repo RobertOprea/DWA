@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
@@ -20,6 +21,8 @@ import butterknife.OnClick;
 
 public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
 
+    public static final String IS_SIMPLE_SCREEN_KEY = "is_simple_screen";
+
     @BindView(R.id.policy_webview)
     WebView webView;
     @BindView(R.id.policies_switch)
@@ -28,6 +31,8 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
     SwitchCompat inductionSwitch;
     @BindView(R.id.next_button)
     Button nextButton;
+    @BindView(R.id.policies_acceptance_container)
+    View policiesAcceptanceContainer;
 
     private Navigator navigator;
     private PoliciesPresenter presenter;
@@ -41,6 +46,12 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
 
         initNavigator();
         initPresenter();
+
+        boolean isSimple = getIntent().getBooleanExtra(IS_SIMPLE_SCREEN_KEY, false);
+
+        if (isSimple) {
+            policiesAcceptanceContainer.setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.dwa.rybridge.ryebridgedwa.navigator;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.dwa.rybridge.ryebridgedwa.ui.activities.ChangePasswordActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.LoginActivity;
@@ -37,6 +38,14 @@ public class Navigator {
 
     public void navigateToPoliciesActivity() {
         Intent intent = new Intent(sourceActivity, PoliciesActivty.class);
+        sourceActivity.startActivity(intent);
+    }
+
+    public void navigateToSimplePoliciesActivity() {
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(PoliciesActivty.IS_SIMPLE_SCREEN_KEY, true);
+        Intent intent = new Intent(sourceActivity, PoliciesActivty.class);
+        intent.putExtras(bundle);
         sourceActivity.startActivity(intent);
     }
 
