@@ -33,5 +33,5 @@
     <!--Main screen strings-->
     <string name="view_policies">View Policies</string>
     <string name="report_a_hazard">Report a Hazard</string>
-    <string name="disclaimer">Before using this app, make sure it is safe to use so!</string>
+    <string name="disclaimer">Before using this app, make sure it is safe to do so!</string>
 </resources>
