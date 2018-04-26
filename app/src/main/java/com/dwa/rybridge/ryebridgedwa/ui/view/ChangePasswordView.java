@@ -8,6 +8,8 @@ public interface ChangePasswordView {
 
     String getConfirmationString();
 
+    void finishView();
+
     void displayToast(String message);
 
 }

@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         navigator.navigateToSimplePoliciesActivity();
     }
 
+    @OnClick(R.id.change_password_link_textview)
+    public void onChangePasswordClicked() {
+        navigator.navigateToChangePasswordActivity();
+    }
+
     private void initPresenter() {
         presenter = new MainPresenterImpl(this);
         presenter.initialise();

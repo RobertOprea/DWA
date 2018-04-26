@@ -52,6 +52,11 @@ public class ChangePasswordActivity extends AppCompatActivity implements ChangeP
     }
 
     @Override
+    public void finishView() {
+        finish();
+    }
+
+    @Override
     public void displayToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
@@ -63,5 +68,6 @@ public class ChangePasswordActivity extends AppCompatActivity implements ChangeP
 
     private void initPresenter() {
         passwordPresenter = new ChangePasswordPresenterImpl(this);
+        passwordPresenter.initialise();
     }
 }

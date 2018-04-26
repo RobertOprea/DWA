@@ -54,7 +54,7 @@ public class Navigator {
         sourceActivity.startActivity(intent);
     }
 
-    public void navigateToChangePasswordScreen() {
+    public void navigateToChangePasswordActivity() {
         Intent intent = new Intent(sourceActivity, ChangePasswordActivity.class);
         sourceActivity.startActivity(intent);
     }
