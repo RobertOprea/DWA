@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/details"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/about_reporter_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="About you"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/reporter_name_input_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="Name of reporter"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                app:backgroundTint="@color/gray"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/reporter_company_input_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:hint="Reporter's company"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                app:backgroundTint="@color/gray"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Where are you working?"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/reporter_project_input_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:hint="Project"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                app:backgroundTint="@color/gray"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_button_color"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

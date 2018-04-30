@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.dwa.rybridge.ryebridgedwa.ui.activities.ChangePasswordActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.HazardReportActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.LoginActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.MainActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.PoliciesActivty;
@@ -56,6 +57,11 @@ public class Navigator {
 
     public void navigateToChangePasswordActivity() {
         Intent intent = new Intent(sourceActivity, ChangePasswordActivity.class);
+        sourceActivity.startActivity(intent);
+    }
+
+    public void navigateToHazardReportActivity() {
+        Intent intent = new Intent(sourceActivity, HazardReportActivity.class);
         sourceActivity.startActivity(intent);
     }
 

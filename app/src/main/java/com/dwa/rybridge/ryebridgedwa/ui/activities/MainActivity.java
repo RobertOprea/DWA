@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         navigator.navigateToChangePasswordActivity();
     }
 
+    @OnClick(R.id.report_hazard_button)
+    public void onReportHazardClicked() {
+        navigator.navigateToHazardReportActivity();
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (grantResults.length > 0

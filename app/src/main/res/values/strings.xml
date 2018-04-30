@@ -34,4 +34,9 @@
     <string name="view_policies">View Policies</string>
     <string name="report_a_hazard">Report a Hazard</string>
     <string name="disclaimer">Before using this app, make sure it is safe to do so!</string>
+
+    <!--Report screen strings-->
+    <string name="details">Details</string>
+    <string name="category">Category</string>
+    <string name="categories_subtitle">Which category best describes the hazard?</string>
 </resources>
