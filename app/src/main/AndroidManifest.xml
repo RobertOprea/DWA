@@ -38,7 +38,7 @@
         <activity android:name=".ui.activities.PoliciesActivty"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ui.activities.HazardReportActivity"
+        <activity android:name=".ui.activities.ReporterDetailsActivity"
                   android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.activities.CategoriesActivity"

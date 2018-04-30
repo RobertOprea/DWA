@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.dwa.rybridge.ryebridgedwa.ui.activities.CategoriesActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.ChangePasswordActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.HazardReportActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.ReporterDetailsActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.LoginActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.MainActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.PoliciesActivty;
@@ -60,9 +61,13 @@ public class Navigator {
         sourceActivity.startActivity(intent);
     }
 
-    public void navigateToHazardReportActivity() {
-        Intent intent = new Intent(sourceActivity, HazardReportActivity.class);
+    public void navigateToReporterDetailsActivity() {
+        Intent intent = new Intent(sourceActivity, ReporterDetailsActivity.class);
         sourceActivity.startActivity(intent);
     }
 
+    public void navigateToCategoriesActivity() {
+        Intent intent = new Intent(sourceActivity, CategoriesActivity.class);
+        sourceActivity.startActivity(intent);
+    }
 }

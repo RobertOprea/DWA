@@ -9,6 +9,8 @@ import com.dwa.rybridge.ryebridgedwa.ui.view.CategoriesView;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -23,6 +25,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesV
     @BindView(R.id.categories_list) ExpandableListView categoriesListView;
 
     private CategoriesPresenter presenter;
+    private CategoriesAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,11 +36,22 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesV
 
         presenter = new CategoriesPresenterImpl(this);
         presenter.initialise();
+
+        categoriesListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                String groupName = adapter.getGroup(groupPosition);
+                String childName = adapter.getChild(groupPosition, childPosition);
+                presenter.onChildClicked(groupName, childName);
+                return false;
+            }
+        });
     }
 
     @Override
     public void setupCategories(Map<String, List<String>> categoriesMap) {
-        CategoriesAdapter adapter = new CategoriesAdapter(this, categoriesMap);
+        adapter = new CategoriesAdapter(this, categoriesMap);
         categoriesListView.setAdapter(adapter);
     }
+
 }

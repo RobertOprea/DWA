@@ -6,6 +6,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import com.dwa.rybridge.ryebridgedwa.ui.view.CategoriesView;
+import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
 public class CategoriesPresenterImpl implements CategoriesPresenter {
 
     private FirebaseDatabase firebaseDatabase;
+    private ReportCacheHolder reportCacheHolder;
     private Map<String, List<String>> categoriesMap = new HashMap<>();
 
     private CategoriesView view;
@@ -25,6 +27,7 @@ public class CategoriesPresenterImpl implements CategoriesPresenter {
 
     @Override
     public void initialise() {
+        reportCacheHolder = ReportCacheHolder.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         firebaseDatabase.getReference().child("categories").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -48,5 +51,11 @@ public class CategoriesPresenterImpl implements CategoriesPresenter {
 
             }
         });
+    }
+
+    @Override
+    public void onChildClicked(String groupName, String childName) {
+        reportCacheHolder.onCategorySelected(groupName, childName);
+        //TODO: move to next screen
     }
 }

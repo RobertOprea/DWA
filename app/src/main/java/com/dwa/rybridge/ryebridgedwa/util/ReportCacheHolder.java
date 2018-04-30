@@ -24,4 +24,9 @@ public class ReportCacheHolder {
         report.setCompany(reporterCompany);
         report.setProject(reporterProject);
     }
+
+    public void onCategorySelected(String groupName, String childName) {
+        String fullCategoryName = groupName + ", " + childName;
+        report.setCategory(fullCategoryName);
+    }
 }

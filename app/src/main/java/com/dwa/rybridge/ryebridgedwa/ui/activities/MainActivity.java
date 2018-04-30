@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @OnClick(R.id.report_hazard_button)
     public void onReportHazardClicked() {
-        navigator.navigateToHazardReportActivity();
+        navigator.navigateToReporterDetailsActivity();
     }
 
     @Override
