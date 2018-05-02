@@ -6,4 +6,6 @@ import java.util.Map;
 public interface CategoriesView {
 
     void setupCategories(Map<String, List<String>> categoriesMap);
+
+    void goToPhotoScreen();
 }

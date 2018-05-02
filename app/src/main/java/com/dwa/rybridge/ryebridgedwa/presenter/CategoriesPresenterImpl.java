@@ -56,6 +56,6 @@ public class CategoriesPresenterImpl implements CategoriesPresenter {
     @Override
     public void onChildClicked(String groupName, String childName) {
         reportCacheHolder.onCategorySelected(groupName, childName);
-        //TODO: move to next screen
+        view.goToPhotoScreen();
     }
 }

@@ -1,6 +1,7 @@
 package com.dwa.rybridge.ryebridgedwa.ui.activities;
 
 import com.dwa.rybridge.ryebridgedwa.R;
+import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.CategoriesPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.CategoriesPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.adapters.CategoriesAdapter;
@@ -26,6 +27,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesV
 
     private CategoriesPresenter presenter;
     private CategoriesAdapter adapter;
+    private Navigator navigator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesV
 
         presenter = new CategoriesPresenterImpl(this);
         presenter.initialise();
+
+        navigator = Navigator.newInstance();
+        navigator.setSourceActivity(this);
 
         categoriesListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -52,6 +57,11 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesV
     public void setupCategories(Map<String, List<String>> categoriesMap) {
         adapter = new CategoriesAdapter(this, categoriesMap);
         categoriesListView.setAdapter(adapter);
+    }
+
+    @Override
+    public void goToPhotoScreen() {
+        navigator.navigateToHazardPhotoActivity();
     }
 
 }

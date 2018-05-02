@@ -39,4 +39,8 @@
     <string name="details">Details</string>
     <string name="category">Category</string>
     <string name="categories_subtitle">Which category best describes the hazard?</string>
+    <string name="photo">Photo</string>
+    <string name="skip_photo">Skip Photo</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="gallery">Gallery</string>
 </resources>
