@@ -2,6 +2,7 @@ package com.dwa.rybridge.ryebridgedwa.navigator;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -97,6 +98,7 @@ public class Navigator {
     public void openCamera(Uri photoUri) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+        intent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         sourceActivity.startActivityForResult(intent, CAMERA_PIC_REQUEST);
     }
 

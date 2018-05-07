@@ -52,4 +52,8 @@ public class ReportCacheHolder {
     public String getPhotoPath() {
         return report.getPhotoPath();
     }
+
+    public Report getReport() {
+        return report;
+    }
 }
