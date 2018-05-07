@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.CategoriesActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.ChangePasswordActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.HazardPhotoActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.PhotoDescriptionActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.ReporterDetailsActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.LoginActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.MainActivity;
@@ -79,6 +80,11 @@ public class Navigator {
 
     public void navigateToHazardPhotoActivity() {
         Intent intent = new Intent(sourceActivity, HazardPhotoActivity.class);
+        sourceActivity.startActivity(intent);
+    }
+
+    public void navigateToPhotoDescriptionActivity() {
+        Intent intent = new Intent(sourceActivity, PhotoDescriptionActivity.class);
         sourceActivity.startActivity(intent);
     }
 

@@ -10,6 +10,7 @@ public class Report {
     private String description;
     private String project;
     private String userDetails;
+    private String photoPath;
 
     public String getActionTaken() {
         return actionTaken;
@@ -73,5 +74,13 @@ public class Report {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 }

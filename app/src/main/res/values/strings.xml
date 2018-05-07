@@ -43,4 +43,10 @@
     <string name="skip_photo">Skip Photo</string>
     <string name="take_photo">Take Photo</string>
     <string name="gallery">Gallery</string>
+    <string name="photo_description">Photo Description</string>
+    <string name="date">Date</string>
+    <string name="hazard">Hazard *</string>
+    <string name="description">Description</string>
+    <string name="actions_taken">Actions Taken</string>
+    <string name="review_hazard">Review Hazard</string>
 </resources>

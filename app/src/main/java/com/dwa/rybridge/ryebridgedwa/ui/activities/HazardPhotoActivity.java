@@ -5,6 +5,7 @@ import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardPhotoView;
+import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
 import com.dwa.rybridge.ryebridgedwa.util.ViewUtil;
 
 import android.content.Context;
@@ -20,6 +21,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -87,8 +89,8 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
                     ViewUtil.loadImage(photoImageView, photoUri);
                     break;
                 case Navigator.GALLERY_REQUEST:
-                    Uri imageUri = data.getData();
-                    ViewUtil.loadImage(photoImageView, imageUri);
+                    photoUri = data.getData();
+                    ViewUtil.loadImage(photoImageView, photoUri);
                     break;
             }
         }
@@ -103,6 +105,23 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
     @OnClick(R.id.gallery_button)
     public void onGalleryClicked() {
         presenter.onGalleryClicked();
+    }
+
+    @OnClick(R.id.next_button)
+    public void onNextClicked() {
+        if (photoUri != null) {
+            ReportCacheHolder.getInstance().onPhotoSelected(photoUri);
+            navigator.navigateToPhotoDescriptionActivity();
+        } else {
+            Toast.makeText(this, "No photo selected!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @OnClick(R.id.skip_photo_button)
+    public void onSkipPhotoClicked() {
+        ReportCacheHolder.getInstance().onPhotoSelected(null);
+        navigator.navigateToPhotoDescriptionActivity();
     }
 
     private File createImageFile(Context context) throws IOException {
