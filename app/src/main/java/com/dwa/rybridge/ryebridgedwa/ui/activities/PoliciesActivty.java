@@ -5,7 +5,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import com.dwa.rybridge.ryebridgedwa.R;
@@ -56,9 +59,10 @@ public class PoliciesActivty extends AppCompatActivity implements PoliciesView{
 
     @Override
     public void loadHtmlPage(String htmlContent) {
-        webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
-        webView.loadData(htmlContent, "text/html; charset=UTF-8",null);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+        webView.loadData(htmlContent, "text/html","UTF-8");
     }
 
     @Override

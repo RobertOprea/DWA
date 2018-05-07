@@ -5,6 +5,7 @@ import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardPhotoView;
+import com.dwa.rybridge.ryebridgedwa.util.ViewUtil;
 
 import android.content.Context;
 import android.content.Intent;
@@ -83,11 +84,11 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
         if (resultCode == RESULT_OK ) {
             switch (requestCode) {
                 case Navigator.CAMERA_PIC_REQUEST:
-                    setPic();
+                    ViewUtil.loadImage(photoImageView, photoUri);
                     break;
                 case Navigator.GALLERY_REQUEST:
                     Uri imageUri = data.getData();
-                    photoImageView.setImageURI(imageUri);
+                    ViewUtil.loadImage(photoImageView, imageUri);
                     break;
             }
         }
@@ -117,29 +118,5 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
 
         currentPhotoPath = image.getAbsolutePath();
         return image;
-    }
-
-    private void setPic() {
-        // Get the dimensions of the View
-        int targetW = photoImageView.getWidth();
-        int targetH = photoImageView.getHeight();
-
-        // Get the dimensions of the bitmap
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
-        int photoW = bmOptions.outWidth;
-        int photoH = bmOptions.outHeight;
-
-        // Determine how much to scale down the image
-        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
-
-        // Decode the image file into a Bitmap sized to fill the View
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
-
-        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
-        photoImageView.setImageBitmap(bitmap);
     }
 }
