@@ -68,7 +68,7 @@ public class PhotoDescriptionActivity extends AppCompatActivity implements Photo
 
     @Override
     public void navigateToReviewScreen() {
-        //TODO: navigate to review screen
+        navigator.navigateToReportReviewActivity();
     }
 
     @Override

@@ -15,6 +15,7 @@ import com.dwa.rybridge.ryebridgedwa.ui.activities.LoginActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.MainActivity;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.PoliciesActivty;
 import com.dwa.rybridge.ryebridgedwa.ui.activities.RegistrationActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.ReviewActivity;
 
 public class Navigator {
 
@@ -85,6 +86,11 @@ public class Navigator {
 
     public void navigateToPhotoDescriptionActivity() {
         Intent intent = new Intent(sourceActivity, PhotoDescriptionActivity.class);
+        sourceActivity.startActivity(intent);
+    }
+
+    public void navigateToReportReviewActivity() {
+        Intent intent = new Intent(sourceActivity, ReviewActivity.class);
         sourceActivity.startActivity(intent);
     }
 

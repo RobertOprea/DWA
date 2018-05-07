@@ -49,4 +49,14 @@
     <string name="description">Description</string>
     <string name="actions_taken">Actions Taken</string>
     <string name="review_hazard">Review Hazard</string>
+    <string name="review">Review</string>
+    <string name="reporter_details">Reporter details:</string>
+    <string name="project">Project:</string>
+    <string name="category_header">Category:</string>
+    <string name="date_found">Date Found:</string>
+    <string name="hazard_description">Hazard description:</string>
+    <string name="actions_already_taken">Actions Already Taken</string>
+    <string name="upload_now">Upload Report Now</string>
+    <string name="upload_later">Upload later</string>
+    <string name="cancel_report">Cancel report</string>
 </resources>
