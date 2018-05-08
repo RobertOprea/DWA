@@ -77,21 +77,25 @@ public class Navigator {
 
     public void navigateToCategoriesActivity() {
         Intent intent = new Intent(sourceActivity, CategoriesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         sourceActivity.startActivity(intent);
     }
 
     public void navigateToHazardPhotoActivity() {
         Intent intent = new Intent(sourceActivity, HazardPhotoActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         sourceActivity.startActivity(intent);
     }
 
     public void navigateToPhotoDescriptionActivity() {
         Intent intent = new Intent(sourceActivity, PhotoDescriptionActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         sourceActivity.startActivity(intent);
     }
 
     public void navigateToReportReviewActivity() {
         Intent intent = new Intent(sourceActivity, ReviewActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         sourceActivity.startActivity(intent);
     }
 

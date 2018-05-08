@@ -6,4 +6,5 @@ public interface HazardReviewView {
 
     void onDisplayReport(Report report);
 
+    void goToMainScreen();
 }

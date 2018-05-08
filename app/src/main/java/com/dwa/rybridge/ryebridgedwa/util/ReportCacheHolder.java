@@ -56,4 +56,16 @@ public class ReportCacheHolder {
     public Report getReport() {
         return report;
     }
+
+    public void clear() {
+        report.setUserDetails(null);
+        report.setDateTaken(null);
+        report.setActionTaken(null);
+        report.setDescription(null);
+        report.setPhotoPath(null);
+        report.setCategory(null);
+        report.setCompany(null);
+        report.setName(null);
+        report.setProject(null);
+    }
 }

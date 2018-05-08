@@ -2,6 +2,7 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.data.Report;
+import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardReviewPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardReviewPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardReviewView;
@@ -29,6 +30,7 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
     @BindView(R.id.photo_image_view) ImageView photoImageView;
 
     private HazardReviewPresenter presenter;
+    private Navigator navigator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
         setContentView(R.layout.activity_review);
 
         ButterKnife.bind(this);
+
+        navigator = Navigator.newInstance();
+        navigator.setSourceActivity(this);
 
         presenter = new HazardReviewPresenterImpl(this);
         presenter.initialise();
@@ -52,8 +57,23 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
         ViewUtil.loadImage(photoImageView, Uri.parse(report.getPhotoPath()));
     }
 
+    @Override
+    public void goToMainScreen() {
+        navigator.navigateToMainActivity();
+    }
+
     @OnClick(R.id.upload_now_button)
     public void onUploadNowClicked() {
         presenter.onUploadNowClicked();
+    }
+
+    @OnClick(R.id.upload_later_button)
+    public void onUploadLaterClicked() {
+        presenter.onUploadLaterClicked();
+    }
+
+    @OnClick(R.id.cancel_button)
+    public void onCancelClicked() {
+        presenter.onCancelReportClicked();
     }
 }

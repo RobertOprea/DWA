@@ -56,7 +56,8 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
 
     @Override
     public void onCancelReportClicked() {
-
+        ReportCacheHolder.getInstance().clear();
+        view.goToMainScreen();
     }
 
     private void uploadImage() {
@@ -72,7 +73,7 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.e("TAG", "Photo was uploaded!!");
+                view.goToMainScreen();
             }
         });
     }
