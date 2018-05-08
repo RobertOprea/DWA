@@ -1,5 +1,7 @@
 package com.dwa.rybridge.ryebridgedwa.data;
 
+import com.google.firebase.database.Exclude;
+
 public class Report {
 
     private String name;
@@ -60,6 +62,7 @@ public class Report {
         this.userDetails = userDetails;
     }
 
+    @Exclude
     public String getName() {
         return name;
     }
@@ -76,6 +79,7 @@ public class Report {
         this.company = company;
     }
 
+    @Exclude
     public String getPhotoPath() {
         return photoPath;
     }

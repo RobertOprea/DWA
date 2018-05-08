@@ -21,11 +21,11 @@ public class ReportCacheHolder {
         report = new Report();
     }
 
-    public void onReporterDetailsCompleted(String reporterName, String reporterCompany, String reporterProject) {
+    public void onReporterDetailsCompleted(String reporterName, String reporterCompany, String reporterProject, String email) {
         report.setName(reporterName);
         report.setCompany(reporterCompany);
         report.setProject(reporterProject);
-        report.setUserDetails(reporterName + ", " + reporterCompany);
+        report.setUserDetails(reporterName + ", " + email + ", " + reporterCompany);
     }
 
     public void onCategorySelected(String groupName, String childName) {

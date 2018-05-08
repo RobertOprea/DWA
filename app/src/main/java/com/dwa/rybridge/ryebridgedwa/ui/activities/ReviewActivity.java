@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ReviewActivity extends AppCompatActivity implements HazardReviewView {
 
@@ -49,5 +50,10 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
         descriptionTextView.setText(report.getDescription());
         actionsTextView.setText(report.getActionTaken());
         ViewUtil.loadImage(photoImageView, Uri.parse(report.getPhotoPath()));
+    }
+
+    @OnClick(R.id.upload_now_button)
+    public void onUploadNowClicked() {
+        presenter.onUploadNowClicked();
     }
 }
