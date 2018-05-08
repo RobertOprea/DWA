@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,7 +55,11 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
         dateTextView.setText(report.getDateTaken());
         descriptionTextView.setText(report.getDescription());
         actionsTextView.setText(report.getActionTaken());
-        ViewUtil.loadImage(photoImageView, Uri.parse(report.getPhotoPath()));
+        if (report.getPhotoPath() != null && !report.getPhotoPath().isEmpty()) {
+            ViewUtil.loadImage(photoImageView, Uri.parse(report.getPhotoPath()));
+        } else {
+            photoImageView.setVisibility(View.GONE);
+        }
     }
 
     @Override

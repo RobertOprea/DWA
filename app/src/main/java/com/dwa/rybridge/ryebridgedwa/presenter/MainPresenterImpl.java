@@ -106,26 +106,36 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     private void uploadImage(final int index, Report report) {
-        StorageReference storageReference = firebaseStorage.getReference();
-        Uri uri = Uri.parse(report.getPhotoPath());
-        StorageReference photoRef = storageReference.child("images/" + report.getName() + "/" + uri.getLastPathSegment());
-        UploadTask uploadTask = photoRef.putFile(uri);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e("TAG", "Failed to upload photo!");
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                int newIndex = index + 1;
-                try {
-                    uploadNextHazard(newIndex);
-                } catch (RepositoryException e) {
-                    e.printStackTrace();
+        if (report.getPhotoPath() != null) {
+            StorageReference storageReference = firebaseStorage.getReference();
+            Uri uri = Uri.parse(report.getPhotoPath());
+            StorageReference photoRef = storageReference.child("images/" + report.getName() + "/" + uri.getLastPathSegment());
+            UploadTask uploadTask = photoRef.putFile(uri);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("TAG", "Failed to upload photo!");
                 }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    int newIndex = index + 1;
+                    try {
+                        uploadNextHazard(newIndex);
+                    } catch (RepositoryException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } else {
+            int newIndex = index + 1;
+            try {
+                uploadNextHazard(newIndex);
+            } catch (RepositoryException e) {
+                e.printStackTrace();
             }
-        });
+        }
+
     }
 
     @SuppressLint("MissingPermission")

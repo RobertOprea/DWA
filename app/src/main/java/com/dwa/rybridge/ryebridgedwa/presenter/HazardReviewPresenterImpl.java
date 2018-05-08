@@ -72,20 +72,24 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
     }
 
     private void uploadImage() {
-        StorageReference storageReference = firebaseStorage.getReference();
-        Uri uri = Uri.parse(report.getPhotoPath());
-        StorageReference photoRef = storageReference.child("images/" + report.getName() + "/" + uri.getLastPathSegment());
-        UploadTask uploadTask = photoRef.putFile(uri);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e("TAG", "Failed to upload photo!");
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                view.goToMainScreen();
-            }
-        });
+        if (report.getPhotoPath() != null) {
+            StorageReference storageReference = firebaseStorage.getReference();
+            Uri uri = Uri.parse(report.getPhotoPath());
+            StorageReference photoRef = storageReference.child("images/" + report.getName() + "/" + uri.getLastPathSegment());
+            UploadTask uploadTask = photoRef.putFile(uri);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("TAG", "Failed to upload photo!");
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    view.goToMainScreen();
+                }
+            });
+        } else {
+            view.goToMainScreen();
+        }
     }
 }
