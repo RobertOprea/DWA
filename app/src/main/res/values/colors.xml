@@ -8,6 +8,7 @@
     <color name="black">#000000</color>
     <color name="gray">#6A6B6D</color>
     <color name="blue">#0286F9</color>
+    <color name="blue_2">#217CBE</color>
     <color name="green_button_color">#9ABA4C</color>
     <color name="blue_text_color">#0E67A7</color>
 </resources>

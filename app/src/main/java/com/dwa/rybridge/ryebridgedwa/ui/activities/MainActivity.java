@@ -11,11 +11,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainView {
+
+    @BindView(R.id.upload_all_container) View uploadAllContainer;
 
     private MainPresenter presenter;
     private Navigator navigator;
@@ -42,6 +46,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
         finish();
     }
 
+    @Override
+    public void showUploadAllView() {
+        uploadAllContainer.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideUploadAllView() {
+        uploadAllContainer.setVisibility(View.GONE);
+    }
+
     @OnClick(R.id.sign_out_button)
     public void onSignOutClicked() {
         presenter.onSingOutClicked();
@@ -62,6 +76,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         navigator.navigateToReporterDetailsActivity();
     }
 
+    @OnClick(R.id.upload_all_button)
+    public void onUploadAllClicked() {
+        presenter.onUploadAllClicked();
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (grantResults.length > 0
@@ -71,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void initPresenter() {
-        presenter = new MainPresenterImpl(this);
+        presenter = new MainPresenterImpl(this, this);
         presenter.initialise(this);
     }
 

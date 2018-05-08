@@ -2,16 +2,42 @@ package com.dwa.rybridge.ryebridgedwa.data;
 
 import com.google.firebase.database.Exclude;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "report")
 public class Report {
 
+    public static final String ID_COLUMN = "id";
+    public static final String NAME_COLUMN = "name";
+    public static final String COMPANY_COLUMN = "company";
+    public static final String ACTION_COLUMN = "action";
+    public static final String CATEGORY_COLUMN = "category";
+    public static final String DATE_COLUMN = "date";
+    public static final String DESCRIPTION_COLUMN = "description";
+    public static final String PROJECT_COLUMN = "project";
+    public static final String USER_DETAILS_COLUMN = "user_details";
+    public static final String PHOTO_PATH_COLUMN = "photo_path";
+
+    @DatabaseField(generatedId = true, columnName = ID_COLUMN)
+    private int id;
+    @DatabaseField(columnName = NAME_COLUMN)
     private String name;
+    @DatabaseField(columnName = COMPANY_COLUMN)
     private String company;
+    @DatabaseField(columnName = ACTION_COLUMN)
     private String actionTaken;
+    @DatabaseField(columnName = CATEGORY_COLUMN)
     private String category;
+    @DatabaseField(columnName = DATE_COLUMN)
     private String dateTaken;
+    @DatabaseField(columnName = DESCRIPTION_COLUMN)
     private String description;
+    @DatabaseField(columnName = PROJECT_COLUMN)
     private String project;
+    @DatabaseField(columnName = USER_DETAILS_COLUMN)
     private String userDetails;
+    @DatabaseField(columnName = PHOTO_PATH_COLUMN)
     private String photoPath;
 
     public String getActionTaken() {

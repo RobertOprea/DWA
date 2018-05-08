@@ -42,7 +42,7 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
         navigator = Navigator.newInstance();
         navigator.setSourceActivity(this);
 
-        presenter = new HazardReviewPresenterImpl(this);
+        presenter = new HazardReviewPresenterImpl(this, this);
         presenter.initialise();
     }
 

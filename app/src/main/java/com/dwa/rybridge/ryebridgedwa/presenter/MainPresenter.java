@@ -9,4 +9,6 @@ public interface MainPresenter {
     void onSingOutClicked();
 
     void onPermissionGranted();
+
+    void onUploadAllClicked();
 }

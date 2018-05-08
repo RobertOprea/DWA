@@ -11,9 +11,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import com.dwa.rybridge.ryebridgedwa.data.Report;
+import com.dwa.rybridge.ryebridgedwa.database.ReportDatabase;
+import com.dwa.rybridge.ryebridgedwa.database.ReportRepository;
+import com.dwa.rybridge.ryebridgedwa.database.RepositoryException;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardReviewView;
 import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -23,12 +27,14 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
     private HazardReviewView view;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
+    private ReportRepository reportRepository;
     private Report report;
 
-    public HazardReviewPresenterImpl(HazardReviewView view) {
+    public HazardReviewPresenterImpl(HazardReviewView view, Context context) {
         this.view = view;
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
+        reportRepository = new ReportDatabase(context);
     }
 
     @Override
@@ -51,7 +57,12 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
 
     @Override
     public void onUploadLaterClicked() {
-
+        try {
+            reportRepository.insert(report);
+            view.goToMainScreen();
+        } catch (RepositoryException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

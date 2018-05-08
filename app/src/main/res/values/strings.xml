@@ -34,6 +34,8 @@
     <string name="view_policies">View Policies</string>
     <string name="report_a_hazard">Report a Hazard</string>
     <string name="disclaimer">Before using this app, make sure it is safe to do so!</string>
+    <string name="unsaved_reports_message">You have unsaved hazards that have not been sent yet. Press the button bellow to transmit them.</string>
+    <string name="upload_pending_reports">Upload pending reports</string>
 
     <!--Report screen strings-->
     <string name="details">Details</string>

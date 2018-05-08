@@ -26,6 +26,40 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/upload_all_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/report_hazard_button"
+        android:background="@drawable/white_stroked_background"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:text="@string/unsaved_reports_message"/>
+
+        <Button
+            android:id="@+id/upload_all_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@color/blue_2"
+            android:text="@string/upload_pending_reports"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/report_hazard_button"
         android:layout_width="match_parent"
