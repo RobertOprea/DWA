@@ -5,15 +5,15 @@ import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardPhotoView;
+import com.dwa.rybridge.ryebridgedwa.util.ImageUtil;
 import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
 import com.dwa.rybridge.ryebridgedwa.util.ViewUtil;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -86,7 +86,23 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
         if (resultCode == RESULT_OK ) {
             switch (requestCode) {
                 case Navigator.CAMERA_PIC_REQUEST:
-                    ViewUtil.loadImage(photoImageView, photoUri);
+                    new AsyncTask<Void, Void, Void>() {
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+                            new ImageUtil(HazardPhotoActivity.this).orientPhoto(photoUri, currentPhotoPath);
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(Void aVoid) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ViewUtil.loadImage(photoImageView, photoUri);
+                                }
+                            });
+                        }
+                    }.execute();
                     break;
                 case Navigator.GALLERY_REQUEST:
                     photoUri = data.getData();
@@ -96,6 +112,7 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
         }
 
     }
+
 
     @OnClick(R.id.take_photo_button)
     public void onTakePhotoClicked() {
