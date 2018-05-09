@@ -1,6 +1,6 @@
 package com.dwa.rybridge.ryebridgedwa.ui.view;
 
-public interface MainView {
+public interface MainView extends LoadingView{
 
     void navigateToLoginScreen();
 

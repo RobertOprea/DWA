@@ -29,6 +29,7 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
     @BindView(R.id.description_text_view) TextView descriptionTextView;
     @BindView(R.id.actions_text_view) TextView actionsTextView;
     @BindView(R.id.photo_image_view) ImageView photoImageView;
+    @BindView(R.id.loading_view) View loadingView;
 
     private HazardReviewPresenter presenter;
     private Navigator navigator;
@@ -80,5 +81,15 @@ public class ReviewActivity extends AppCompatActivity implements HazardReviewVie
     @OnClick(R.id.cancel_button)
     public void onCancelClicked() {
         presenter.onCancelReportClicked();
+    }
+
+    @Override
+    public void hideLoadingView() {
+        loadingView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingView() {
+        loadingView.setVisibility(View.VISIBLE);
     }
 }

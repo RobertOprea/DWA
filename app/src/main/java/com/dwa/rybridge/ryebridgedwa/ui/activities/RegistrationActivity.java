@@ -3,6 +3,7 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,20 +19,14 @@ import butterknife.OnClick;
 
 public class RegistrationActivity extends AppCompatActivity implements RegistrationView {
 
-    @BindView(R.id.first_name_input_edittext)
-    EditText firstNameEditText;
-    @BindView(R.id.last_name_input_edittext)
-    EditText lastNameEditText;
-    @BindView(R.id.email_address_input_edittext)
-    EditText emailAddressEditText;
-    @BindView(R.id.mobile_number_input_edittext)
-    EditText mobileNumberEditText;
-    @BindView(R.id.password_input_edittext)
-    EditText passwordEditText;
-    @BindView(R.id.repeat_password_input_edittext)
-    EditText repeatPasswordEditText;
-    @BindView(R.id.access_code_input_edittext)
-    EditText accessCodeEditText;
+    @BindView(R.id.first_name_input_edittext) EditText firstNameEditText;
+    @BindView(R.id.last_name_input_edittext) EditText lastNameEditText;
+    @BindView(R.id.email_address_input_edittext) EditText emailAddressEditText;
+    @BindView(R.id.mobile_number_input_edittext) EditText mobileNumberEditText;
+    @BindView(R.id.password_input_edittext) EditText passwordEditText;
+    @BindView(R.id.repeat_password_input_edittext) EditText repeatPasswordEditText;
+    @BindView(R.id.access_code_input_edittext) EditText accessCodeEditText;
+    @BindView(R.id.loading_view) View loadingView;
 
     private RegistrationPresenter presenter;
     private Navigator navigator;
@@ -103,5 +98,15 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     @OnClick(R.id.register_button)
     public void onRegisterClicked() {
         presenter.onRegisterClicked();
+    }
+
+    @Override
+    public void hideLoadingView() {
+        loadingView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingView() {
+        loadingView.setVisibility(View.VISIBLE);
     }
 }

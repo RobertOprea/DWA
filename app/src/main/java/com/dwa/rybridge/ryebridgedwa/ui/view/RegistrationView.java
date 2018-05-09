@@ -1,6 +1,6 @@
 package com.dwa.rybridge.ryebridgedwa.ui.view;
 
-public interface RegistrationView {
+public interface RegistrationView extends LoadingView{
 
     String getFirstName();
 

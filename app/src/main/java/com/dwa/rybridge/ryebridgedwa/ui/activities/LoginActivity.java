@@ -3,6 +3,7 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,12 +17,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginView{
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
-    @BindView(R.id.email_input_edittext)
-    EditText emailEditText;
-    @BindView(R.id.password_input_edittext)
-    EditText passwordEditText;
+    @BindView(R.id.email_input_edittext) EditText emailEditText;
+    @BindView(R.id.password_input_edittext) EditText passwordEditText;
+    @BindView(R.id.loading_view) View loadingView;
 
     private LoginPresenter loginPresenter;
     private Navigator navigator;
@@ -85,5 +85,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     private void initPresenter() {
         loginPresenter = new LoginPresenterImpl(this);
         loginPresenter.initialise();
+    }
+
+    @Override
+    public void hideLoadingView() {
+        loadingView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingView() {
+        loadingView.setVisibility(View.VISIBLE);
     }
 }

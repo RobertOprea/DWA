@@ -20,6 +20,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,12 +33,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.*;
-import static com.dwa.rybridge.ryebridgedwa.constants.GeneralUseConstants.*;
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.NO_PHOTO_SELECTED;
+import static com.dwa.rybridge.ryebridgedwa.constants.GeneralUseConstants.FILE_TIME_FORMAT;
 
 public class HazardPhotoActivity extends AppCompatActivity implements HazardPhotoView {
 
     @BindView(R.id.photo_image_view) ImageView photoImageView;
+    @BindView(R.id.loading_view) View loadingView;
 
     private HazardPhotoPresenter presenter;
     private Navigator navigator;
@@ -92,6 +94,7 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
                     new AsyncTask<Void, Void, Void>() {
                         @Override
                         protected Void doInBackground(Void... voids) {
+                            showLoadingView();
                             new ImageUtil(HazardPhotoActivity.this).orientPhoto(photoUri, currentPhotoPath);
                             return null;
                         }
@@ -101,6 +104,7 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    hideLoadingView();
                                     ViewUtil.loadImage(photoImageView, photoUri);
                                 }
                             });
@@ -157,5 +161,15 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
 
         currentPhotoPath = image.getAbsolutePath();
         return image;
+    }
+
+    @Override
+    public void hideLoadingView() {
+        loadingView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingView() {
+        loadingView.setVisibility(View.VISIBLE);
     }
 }

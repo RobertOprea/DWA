@@ -80,6 +80,7 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onUploadAllClicked() {
+        view.showLoadingView();
         uploadAllHazards();
     }
 
@@ -104,6 +105,7 @@ public class MainPresenterImpl implements MainPresenter {
                 }
             });
         } else {
+            view.hideUploadAllView();
             reportRepository.clear();
             view.hideUploadAllView();
         }

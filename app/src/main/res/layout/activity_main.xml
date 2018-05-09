@@ -60,31 +60,37 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/report_hazard_button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:background="@color/green_button_color"
-        android:text="@string/report_a_hazard"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:layout_above="@+id/sign_out_button"/>
+        android:orientation="vertical"
+        android:layout_above="@+id/footer">
 
-    <Button
-        android:id="@+id/sign_out_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:background="@color/green_button_color"
-        android:text="Sign Out"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:layout_above="@+id/footer"/>
+        <Button
+            android:id="@+id/report_hazard_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/green_button_color"
+            android:text="@string/report_a_hazard"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/sign_out_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/green_button_color"
+            android:text="@string/sign_out"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/footer"
@@ -115,6 +121,39 @@
             android:textColor="@color/blue_text_color"
             android:textSize="15sp"
             android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_70"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ProgressBar
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                style="@android:style/Widget.ProgressBar.Large"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/uploading_reports"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

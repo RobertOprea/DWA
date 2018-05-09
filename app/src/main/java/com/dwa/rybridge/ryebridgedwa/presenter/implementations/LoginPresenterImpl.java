@@ -40,12 +40,14 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void onLoginClicked(String email, String password) {
+        view.showLoadingView();
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     checkPoliciesAcceptance();
                 } else {
+                    view.hideLoadingView();
                     view.displayToast(FAILED_LOGIN);
                 }
             }
@@ -75,6 +77,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User loggedInUser = dataSnapshot.getValue(User.class);
+                view.hideLoadingView();
                 if (loggedInUser.arePoliciesAccepted()) {
                     view.navigateToMainActivity();
                 } else {

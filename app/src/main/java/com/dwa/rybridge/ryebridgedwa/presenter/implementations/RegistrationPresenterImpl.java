@@ -72,12 +72,14 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
 
     //TODO Should consider extracting this into a usecase
     private void registerUser() {
+        registrationView.showLoadingView();
         firebaseAuth.createUserWithEmailAndPassword(registerData.getEmailAddress(), registerData.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     uploadData();
                 } else{
+                    registrationView.hideLoadingView();
                     registrationView.displayToastMessage(FAILED_REGISTRATION);
                 }
             }
@@ -119,6 +121,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
 
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
+            registrationView.hideLoadingView();
             registrationView.navigateToPolictiesActivity();
             userDBReference.removeEventListener(this);
         }

@@ -61,4 +61,9 @@
     <string name="upload_now">Upload Report Now</string>
     <string name="upload_later">Upload later</string>
     <string name="cancel_report">Cancel report</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="uploading_report">Uploading report</string>
+    <string name="registering">Registering</string>
+    <string name="uploading_reports">Uploading reports</string>
+    <string name="logging_in">Logging in</string>
 </resources>

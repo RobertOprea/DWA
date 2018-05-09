@@ -48,6 +48,7 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
 
     @Override
     public void onUploadNowClicked() {
+        view.showLoadingView();
         firebaseDatabase.getReference().child(REPORTS).child(report.getName()).push().setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -88,10 +89,12 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    view.hideLoadingView();
                     view.goToMainScreen();
                 }
             });
         } else {
+            view.hideLoadingView();
             view.goToMainScreen();
         }
     }

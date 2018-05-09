@@ -20,6 +20,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements MainView {
 
     @BindView(R.id.upload_all_container) View uploadAllContainer;
+    @BindView(R.id.loading_view) View loadingView;
 
     private MainPresenter presenter;
     private Navigator navigator;
@@ -97,5 +98,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private void initNavigator() {
         navigator = Navigator.newInstance();
         navigator.setSourceActivity(this);
+    }
+
+    @Override
+    public void hideLoadingView() {
+        loadingView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadingView() {
+        loadingView.setVisibility(View.VISIBLE);
     }
 }

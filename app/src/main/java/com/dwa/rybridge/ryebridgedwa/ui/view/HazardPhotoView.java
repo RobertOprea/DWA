@@ -1,6 +1,6 @@
 package com.dwa.rybridge.ryebridgedwa.ui.view;
 
-public interface HazardPhotoView {
+public interface HazardPhotoView extends LoadingView{
 
     void openCamera();
 
