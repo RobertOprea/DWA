@@ -1,10 +1,9 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -14,6 +13,7 @@ import com.dwa.rybridge.ryebridgedwa.data.Report;
 import com.dwa.rybridge.ryebridgedwa.database.ReportDatabase;
 import com.dwa.rybridge.ryebridgedwa.database.ReportRepository;
 import com.dwa.rybridge.ryebridgedwa.database.RepositoryException;
+import com.dwa.rybridge.ryebridgedwa.presenter.HazardReviewPresenter;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardReviewView;
 import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
 
@@ -21,6 +21,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.IMAGES_FOLDER;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.REPORTS;
 
 public class HazardReviewPresenterImpl implements HazardReviewPresenter {
 
@@ -45,7 +48,7 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
 
     @Override
     public void onUploadNowClicked() {
-        firebaseDatabase.getReference().child("reports").child(report.getName()).push().setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
+        firebaseDatabase.getReference().child(REPORTS).child(report.getName()).push().setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -75,7 +78,7 @@ public class HazardReviewPresenterImpl implements HazardReviewPresenter {
         if (report.getPhotoPath() != null) {
             StorageReference storageReference = firebaseStorage.getReference();
             Uri uri = Uri.parse(report.getPhotoPath());
-            StorageReference photoRef = storageReference.child("images/" + report.getName() + "/" + uri.getLastPathSegment());
+            StorageReference photoRef = storageReference.child(IMAGES_FOLDER + report.getName() + "/" + uri.getLastPathSegment());
             UploadTask uploadTask = photoRef.putFile(uri);
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override

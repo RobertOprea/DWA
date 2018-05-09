@@ -1,4 +1,4 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -16,6 +16,7 @@ import com.dwa.rybridge.ryebridgedwa.data.Report;
 import com.dwa.rybridge.ryebridgedwa.database.ReportDatabase;
 import com.dwa.rybridge.ryebridgedwa.database.ReportRepository;
 import com.dwa.rybridge.ryebridgedwa.database.RepositoryException;
+import com.dwa.rybridge.ryebridgedwa.presenter.MainPresenter;
 import com.dwa.rybridge.ryebridgedwa.ui.view.MainView;
 
 import android.Manifest;
@@ -31,6 +32,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.IMAGES_FOLDER;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.REPORTS;
 
 public class MainPresenterImpl implements MainPresenter {
 
@@ -91,7 +95,7 @@ public class MainPresenterImpl implements MainPresenter {
         List<Report> reports = reportRepository.getAll();
         if (!reports.isEmpty() && index <= reports.size() - 1) {
             final Report report = reports.get(index);
-            firebaseDatabase.getReference().child("reports").child(report.getName()).push().setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
+            firebaseDatabase.getReference().child(REPORTS).child(report.getName()).push().setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
@@ -109,7 +113,7 @@ public class MainPresenterImpl implements MainPresenter {
         if (report.getPhotoPath() != null) {
             StorageReference storageReference = firebaseStorage.getReference();
             Uri uri = Uri.parse(report.getPhotoPath());
-            StorageReference photoRef = storageReference.child("images/" + report.getName() + "/" + uri.getLastPathSegment());
+            StorageReference photoRef = storageReference.child(IMAGES_FOLDER + report.getName() + "/" + uri.getLastPathSegment());
             UploadTask uploadTask = photoRef.putFile(uri);
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override

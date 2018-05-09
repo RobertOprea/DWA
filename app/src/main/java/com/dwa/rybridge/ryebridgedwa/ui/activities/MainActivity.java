@@ -3,7 +3,7 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.MainPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.MainPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.MainPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.MainView;
 
 import android.content.pm.PackageManager;

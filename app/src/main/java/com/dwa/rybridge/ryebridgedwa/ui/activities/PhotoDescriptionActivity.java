@@ -3,7 +3,7 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.PhotoDescriptionPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.PhotoDescriptionPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.PhotoDescriptionPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.PhotoDescriptionView;
 import com.dwa.rybridge.ryebridgedwa.util.ViewUtil;
 

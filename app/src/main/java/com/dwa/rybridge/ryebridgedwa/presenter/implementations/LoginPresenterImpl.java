@@ -1,10 +1,4 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
-
-import android.support.annotation.NonNull;
-
-import com.dwa.rybridge.ryebridgedwa.data.User;
-import com.dwa.rybridge.ryebridgedwa.ui.view.LoginView;
-import com.dwa.rybridge.ryebridgedwa.validator.EmailValidator;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -14,6 +8,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import com.dwa.rybridge.ryebridgedwa.data.User;
+import com.dwa.rybridge.ryebridgedwa.presenter.LoginPresenter;
+import com.dwa.rybridge.ryebridgedwa.ui.view.LoginView;
+import com.dwa.rybridge.ryebridgedwa.validator.EmailValidator;
+
+import android.support.annotation.NonNull;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.EMPTY_EMAIL;
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.FAILED_LOGIN;
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.INVALID_EMAIL;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.USER_DATA;
+import static com.dwa.rybridge.ryebridgedwa.constants.GeneralUseConstants.SUCCESSFUL_EMAIL_SEND;
 
 public class LoginPresenterImpl implements LoginPresenter {
 
@@ -39,7 +46,7 @@ public class LoginPresenterImpl implements LoginPresenter {
                 if (task.isSuccessful()) {
                     checkPoliciesAcceptance();
                 } else {
-                    view.displayToast("Login failed!");
+                    view.displayToast(FAILED_LOGIN);
                 }
             }
         });
@@ -48,15 +55,15 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     public void onForgotPasswordClicked(String email) {
         if (email.isEmpty()) {
-            view.displayToast("Email field is empty!");
+            view.displayToast(EMPTY_EMAIL);
         } else if (!EmailValidator.validate(email)) {
-            view.displayToast("Email is invalid!");
+            view.displayToast(INVALID_EMAIL);
         } else {
             auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        view.displayToast("E-mail sent successfully!");
+                        view.displayToast(SUCCESSFUL_EMAIL_SEND);
                     }
                 }
             });
@@ -64,7 +71,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     private void checkPoliciesAcceptance() {
-        firebaseDatabase.getReference().child("userData").child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference().child(USER_DATA).child(auth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User loggedInUser = dataSnapshot.getValue(User.class);

@@ -1,10 +1,5 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
-import android.support.annotation.NonNull;
-
-import com.dwa.rybridge.ryebridgedwa.data.RegisterData;
-import com.dwa.rybridge.ryebridgedwa.ui.view.RegistrationView;
-import com.dwa.rybridge.ryebridgedwa.validator.RegistrationValidator;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -14,6 +9,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import com.dwa.rybridge.ryebridgedwa.data.RegisterData;
+import com.dwa.rybridge.ryebridgedwa.presenter.RegistrationPresenter;
+import com.dwa.rybridge.ryebridgedwa.ui.view.RegistrationView;
+import com.dwa.rybridge.ryebridgedwa.validator.RegistrationValidator;
+
+import android.support.annotation.NonNull;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.FAILED_REGISTRATION;
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.INVALID_ACCESS_CODE;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.ACCESS_CODE;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.EMAIL;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.NAME;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.PHONE;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.USER_DATA;
 
 public class RegistrationPresenterImpl implements RegistrationPresenter {
 
@@ -57,7 +67,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
     }
 
     private void startRegister() {
-        firebaseDatabase.getReference().child("accessCode").addListenerForSingleValueEvent(new AccessCodeValueListener());
+        firebaseDatabase.getReference().child(ACCESS_CODE).addListenerForSingleValueEvent(new AccessCodeValueListener());
     }
 
     //TODO Should consider extracting this into a usecase
@@ -68,7 +78,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
                 if (task.isSuccessful()) {
                     uploadData();
                 } else{
-                    registrationView.displayToastMessage("Registration failed!");
+                    registrationView.displayToastMessage(FAILED_REGISTRATION);
                 }
             }
         });
@@ -77,10 +87,10 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
     //TODO Should consider extracting this into a usecase
     private void uploadData() {
         String userId = firebaseAuth.getUid();
-        userDBReference = firebaseDatabase.getReference().child("userData").child(userId);
-        userDBReference.child("name").setValue(registerData.getFirstName() + " " + registerData.getLastName());
-        userDBReference.child("email").setValue(registerData.getEmailAddress());
-        userDBReference.child("phone").setValue(registerData.getMobileNumber());
+        userDBReference = firebaseDatabase.getReference().child(USER_DATA).child(userId);
+        userDBReference.child(NAME).setValue(registerData.getFirstName() + " " + registerData.getLastName());
+        userDBReference.child(EMAIL).setValue(registerData.getEmailAddress());
+        userDBReference.child(PHONE).setValue(registerData.getMobileNumber());
         userDBReference.addListenerForSingleValueEvent(dataUploadValueListener);
     }
 
@@ -92,7 +102,7 @@ public class RegistrationPresenterImpl implements RegistrationPresenter {
             String firebaseAccessCode = dataSnapshot.getValue(String.class);
 
             if (!registerData.getAccessCode().equals(firebaseAccessCode)) {
-                registrationView.displayToastMessage("Invalid access code!");
+                registrationView.displayToastMessage(INVALID_ACCESS_CODE);
             } else {
                 registerUser();
             }

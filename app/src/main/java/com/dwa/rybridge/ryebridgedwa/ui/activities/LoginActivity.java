@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.LoginPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.LoginPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.LoginPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.LoginView;
 
 import butterknife.BindView;

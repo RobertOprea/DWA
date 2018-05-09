@@ -3,7 +3,7 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.SplashPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.SplashPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.SplashPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.SplashView;
 
 import android.os.Bundle;

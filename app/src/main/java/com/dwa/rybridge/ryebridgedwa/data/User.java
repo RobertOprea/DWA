@@ -6,6 +6,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.ACCEPTED_TC;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.INDUCTION_RECEIVED;
+
 @IgnoreExtraProperties
 public class User {
 
@@ -44,8 +47,8 @@ public class User {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("acceptedTermsAndConditions", acceptedTermsAndConditions);
-        result.put("safetyInductionReceived", safetyInductionReceived);
+        result.put(ACCEPTED_TC, acceptedTermsAndConditions);
+        result.put(INDUCTION_RECEIVED, safetyInductionReceived);
         return result;
     }
 }

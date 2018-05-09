@@ -3,16 +3,14 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.CategoriesPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.CategoriesPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.CategoriesPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.adapters.CategoriesAdapter;
 import com.dwa.rybridge.ryebridgedwa.ui.view.CategoriesView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import java.util.List;

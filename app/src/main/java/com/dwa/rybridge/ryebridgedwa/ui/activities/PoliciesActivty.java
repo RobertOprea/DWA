@@ -5,16 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.PoliciesPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.PoliciesPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.PoliciesPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.PoliciesView;
 
 import butterknife.BindView;

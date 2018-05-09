@@ -3,7 +3,7 @@ package com.dwa.rybridge.ryebridgedwa.ui.activities;
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.HazardPhotoPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardPhotoView;
 import com.dwa.rybridge.ryebridgedwa.util.ImageUtil;
 import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
@@ -31,6 +31,9 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.*;
+import static com.dwa.rybridge.ryebridgedwa.constants.GeneralUseConstants.*;
 
 public class HazardPhotoActivity extends AppCompatActivity implements HazardPhotoView {
 
@@ -130,7 +133,7 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
             ReportCacheHolder.getInstance().onPhotoSelected(photoUri);
             navigator.navigateToPhotoDescriptionActivity();
         } else {
-            Toast.makeText(this, "No photo selected!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, NO_PHOTO_SELECTED, Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -142,7 +145,7 @@ public class HazardPhotoActivity extends AppCompatActivity implements HazardPhot
     }
 
     private File createImageFile(Context context) throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String timeStamp = new SimpleDateFormat(FILE_TIME_FORMAT).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image;

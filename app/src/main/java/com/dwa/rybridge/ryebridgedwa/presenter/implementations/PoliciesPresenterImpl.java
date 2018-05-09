@@ -1,14 +1,21 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
-import android.view.View;
-
-import com.dwa.rybridge.ryebridgedwa.ui.view.PoliciesView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import com.dwa.rybridge.ryebridgedwa.presenter.PoliciesPresenter;
+import com.dwa.rybridge.ryebridgedwa.ui.view.PoliciesView;
+
+import android.view.View;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.ACCEPTED_TC;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.INDUCTION_RECEIVED;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.PRIVACY_POLICY;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.REPORTS;
 
 public class PoliciesPresenterImpl implements PoliciesPresenter {
 
@@ -39,9 +46,9 @@ public class PoliciesPresenterImpl implements PoliciesPresenter {
     @Override
     public void onNextButtonClicked() {
         String userId = firebaseAuth.getUid();
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("userData").child(userId);
-        databaseReference.child("acceptedTermsAndConditions").setValue(true);
-        databaseReference.child("safetyInductionReceived").setValue(true);
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child(REPORTS).child(userId);
+        databaseReference.child(ACCEPTED_TC).setValue(true);
+        databaseReference.child(INDUCTION_RECEIVED).setValue(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -56,7 +63,7 @@ public class PoliciesPresenterImpl implements PoliciesPresenter {
     }
 
     private void getPolicyHtml() {
-        firebaseDatabase.getReference().child("privacyPolicy").addValueEventListener(new ValueEventListener() {
+        firebaseDatabase.getReference().child(PRIVACY_POLICY).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String htmlPage = dataSnapshot.getValue(String.class);

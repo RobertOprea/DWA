@@ -1,5 +1,6 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
+import com.dwa.rybridge.ryebridgedwa.presenter.HazardPhotoPresenter;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardPhotoView;
 
 import android.Manifest;

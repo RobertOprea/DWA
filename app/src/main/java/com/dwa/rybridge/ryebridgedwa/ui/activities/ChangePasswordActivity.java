@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.presenter.ChangePasswordPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.ChangePasswordPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.ChangePasswordPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.ChangePasswordView;
 
 import butterknife.BindView;

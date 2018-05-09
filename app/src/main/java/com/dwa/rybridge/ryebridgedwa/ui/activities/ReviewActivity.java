@@ -4,7 +4,7 @@ import com.dwa.rybridge.ryebridgedwa.R;
 import com.dwa.rybridge.ryebridgedwa.data.Report;
 import com.dwa.rybridge.ryebridgedwa.navigator.Navigator;
 import com.dwa.rybridge.ryebridgedwa.presenter.HazardReviewPresenter;
-import com.dwa.rybridge.ryebridgedwa.presenter.HazardReviewPresenterImpl;
+import com.dwa.rybridge.ryebridgedwa.presenter.implementations.HazardReviewPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.HazardReviewView;
 import com.dwa.rybridge.ryebridgedwa.util.ViewUtil;
 

@@ -1,22 +1,23 @@
 package com.dwa.rybridge.ryebridgedwa.navigator;
 
+import com.dwa.rybridge.ryebridgedwa.ui.activities.CategoriesActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.ChangePasswordActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.HazardPhotoActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.LoginActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.MainActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.PhotoDescriptionActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.PoliciesActivty;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.RegistrationActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.ReporterDetailsActivity;
+import com.dwa.rybridge.ryebridgedwa.ui.activities.ReviewActivity;
+
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
-import com.dwa.rybridge.ryebridgedwa.ui.activities.CategoriesActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.ChangePasswordActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.HazardPhotoActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.PhotoDescriptionActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.ReporterDetailsActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.LoginActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.MainActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.PoliciesActivty;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.RegistrationActivity;
-import com.dwa.rybridge.ryebridgedwa.ui.activities.ReviewActivity;
+import static com.dwa.rybridge.ryebridgedwa.constants.GeneralUseConstants.IMAGE_INTENT_TYPE;
 
 public class Navigator {
 
@@ -107,7 +108,7 @@ public class Navigator {
 
     public void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
+        intent.setType(IMAGE_INTENT_TYPE);
         sourceActivity.startActivityForResult(intent, GALLERY_REQUEST);
     }
 }

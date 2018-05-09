@@ -1,5 +1,6 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
+import com.dwa.rybridge.ryebridgedwa.presenter.PhotoDescriptionPresenter;
 import com.dwa.rybridge.ryebridgedwa.ui.view.PhotoDescriptionView;
 import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
 
@@ -8,6 +9,10 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import android.net.Uri;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.EMPTY_ACTIONS;
+import static com.dwa.rybridge.ryebridgedwa.constants.ErrorMessageConstants.EMPTY_DESCRIPTION;
+import static com.dwa.rybridge.ryebridgedwa.constants.GeneralUseConstants.DISPLAY_TIME_FORMAT;
 
 public class PhotoDescriptionPresenterImpl implements PhotoDescriptionPresenter {
 
@@ -36,9 +41,9 @@ public class PhotoDescriptionPresenterImpl implements PhotoDescriptionPresenter 
         String actions = view.getActions();
 
         if (description.isEmpty()) {
-            view.displayToast("Description is empty!");
+            view.displayToast(EMPTY_DESCRIPTION);
         } else if (actions.isEmpty()) {
-            view.displayToast("Actions taken is empty!");
+            view.displayToast(EMPTY_ACTIONS);
         } else {
             ReportCacheHolder.getInstance().onDescriptionAdded(description, actions, getDateString());
             view.navigateToReviewScreen();
@@ -47,7 +52,7 @@ public class PhotoDescriptionPresenterImpl implements PhotoDescriptionPresenter 
 
     private String getDateString() {
         DateTime dateTime = DateTime.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("MMM dd, yyyy");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(DISPLAY_TIME_FORMAT);
         return dateTimeFormatter.print(dateTime);
     }
 }

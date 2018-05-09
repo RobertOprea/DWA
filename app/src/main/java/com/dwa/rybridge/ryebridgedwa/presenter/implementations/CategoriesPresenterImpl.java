@@ -1,10 +1,11 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.dwa.rybridge.ryebridgedwa.presenter.CategoriesPresenter;
 import com.dwa.rybridge.ryebridgedwa.ui.view.CategoriesView;
 import com.dwa.rybridge.ryebridgedwa.util.ReportCacheHolder;
 
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.CATEGORIES;
 
 public class CategoriesPresenterImpl implements CategoriesPresenter {
 
@@ -30,7 +33,7 @@ public class CategoriesPresenterImpl implements CategoriesPresenter {
         reportCacheHolder = ReportCacheHolder.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        firebaseDatabase.getReference().child("categories").addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference().child(CATEGORIES).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {

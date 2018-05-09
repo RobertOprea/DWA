@@ -1,4 +1,4 @@
-package com.dwa.rybridge.ryebridgedwa.presenter;
+package com.dwa.rybridge.ryebridgedwa.presenter.implementations;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -8,9 +8,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import com.dwa.rybridge.ryebridgedwa.data.User;
+import com.dwa.rybridge.ryebridgedwa.presenter.SplashPresenter;
 import com.dwa.rybridge.ryebridgedwa.ui.view.SplashView;
 
 import android.os.Handler;
+
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.USER_DATA;
+import static com.dwa.rybridge.ryebridgedwa.constants.GeneralUseConstants.SPLASH_SCREEN_DELAY;
 
 public class SplashPresenterImpl implements SplashPresenter {
 
@@ -37,14 +41,14 @@ public class SplashPresenterImpl implements SplashPresenter {
                 public void run() {
                     view.navigateToLoginScreen();
                 }
-            }, 2000);
+            }, SPLASH_SCREEN_DELAY);
         } else {
             checkIfPoliciesAreAccepted();
         }
     }
 
     private void checkIfPoliciesAreAccepted() {
-        firebaseDatabase.getReference().child("userData").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference().child(USER_DATA).child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
