@@ -18,6 +18,8 @@ public class Report {
     public static final String PROJECT_COLUMN = "project";
     public static final String USER_DETAILS_COLUMN = "user_details";
     public static final String PHOTO_PATH_COLUMN = "photo_path";
+    public static final String LONGITUDE_COLUMN = "longitude";
+    public static final String LATITUDE_COLUMN = "latitude";
 
     @DatabaseField(generatedId = true, columnName = ID_COLUMN)
     private int id;
@@ -39,6 +41,10 @@ public class Report {
     private String userDetails;
     @DatabaseField(columnName = PHOTO_PATH_COLUMN)
     private String photoPath;
+    @DatabaseField(columnName = LONGITUDE_COLUMN)
+    private double longitude;
+    @DatabaseField(columnName = LATITUDE_COLUMN)
+    private double latitude;
 
     public String getActionTaken() {
         return actionTaken;
@@ -112,5 +118,21 @@ public class Report {
 
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 }

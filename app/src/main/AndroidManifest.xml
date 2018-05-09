@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dwa.rybridge.ryebridgedwa">
+          package="com.dwa.rybridge.ryebridgedwa"
+    >
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -13,57 +14,82 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar" >
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        >
 
-        <activity android:name=".ui.activities.SplashActivity"
+        <activity
+            android:name=".ui.activities.SplashActivity"
             android:screenOrientation="portrait"
-            android:noHistory="true">
+            android:noHistory="true"
+            >
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
         </activity>
 
-        <activity android:name=".ui.activities.MainActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.LoginActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.LoginActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.ChangePasswordActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.RegistrationActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.RegistrationActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.PoliciesActivty"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.PoliciesActivty"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.ReporterDetailsActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.ReporterDetailsActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.CategoriesActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.CategoriesActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.HazardPhotoActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.HazardPhotoActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.PhotoDescriptionActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.PhotoDescriptionActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".ui.activities.ReviewActivity"
-                  android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.ReviewActivity"
+            android:screenOrientation="portrait"
+            />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.android.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths"
+                ></meta-data>
         </provider>
 
 

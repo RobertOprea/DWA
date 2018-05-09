@@ -49,6 +49,11 @@ public class ReportCacheHolder {
         report.setDateTaken(date);
     }
 
+    public void setCoordinates(double latitude, double longitude) {
+        report.setLatitude(latitude);
+        report.setLongitude(longitude);
+    }
+
     public String getPhotoPath() {
         return report.getPhotoPath();
     }

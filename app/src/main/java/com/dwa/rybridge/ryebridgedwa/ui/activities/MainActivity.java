@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @OnClick(R.id.sign_out_button)
     public void onSignOutClicked() {
-        presenter.onSingOutClicked();
+        presenter.onSignOutClicked();
     }
 
     @OnClick(R.id.view_policies_link_textview)
@@ -82,17 +82,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter.onUploadAllClicked();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (grantResults.length > 0
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            presenter.onPermissionGranted();
-        }
-    }
-
     private void initPresenter() {
         presenter = new MainPresenterImpl(this, this);
-        presenter.initialise(this);
+        presenter.initialise();
     }
 
     private void initNavigator() {
