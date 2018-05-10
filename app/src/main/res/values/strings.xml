@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RyebridgeDWA</string>
+    <string name="app_name">RBridge</string>
 
     <!--Login screen strings-->
     <string name="email">E-Mail</string>
@@ -52,15 +52,15 @@
     <string name="actions_taken">Actions Taken</string>
     <string name="review_hazard">Review Hazard</string>
     <string name="review">Review</string>
-    <string name="reporter_details">Reporter details:</string>
+    <string name="reporter_details">Reporter Details:</string>
     <string name="project">Project:</string>
     <string name="category_header">Category:</string>
     <string name="date_found">Date Found:</string>
-    <string name="hazard_description">Hazard description:</string>
+    <string name="hazard_description">Hazard Description:</string>
     <string name="actions_already_taken">Actions Already Taken</string>
     <string name="upload_now">Upload Report Now</string>
-    <string name="upload_later">Upload later</string>
-    <string name="cancel_report">Cancel report</string>
+    <string name="upload_later">Upload Later</string>
+    <string name="cancel_report">Cancel Report</string>
     <string name="sign_out">Sign Out</string>
     <string name="uploading_report">Uploading report</string>
     <string name="registering">Registering</string>
