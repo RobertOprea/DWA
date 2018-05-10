@@ -22,29 +22,29 @@ public class Report {
     public static final String LATITUDE_COLUMN = "latitude";
 
     @DatabaseField(generatedId = true, columnName = ID_COLUMN)
-    private int id;
+    public int id;
     @DatabaseField(columnName = NAME_COLUMN)
-    private String name;
+    public String name;
     @DatabaseField(columnName = COMPANY_COLUMN)
-    private String company;
+    public String company;
     @DatabaseField(columnName = ACTION_COLUMN)
-    private String actionTaken;
+    public String actionTaken;
     @DatabaseField(columnName = CATEGORY_COLUMN)
-    private String category;
+    public String category;
     @DatabaseField(columnName = DATE_COLUMN)
-    private String dateTaken;
+    public String dateTaken;
     @DatabaseField(columnName = DESCRIPTION_COLUMN)
-    private String description;
+    public String description;
     @DatabaseField(columnName = PROJECT_COLUMN)
-    private String project;
+    public String project;
     @DatabaseField(columnName = USER_DETAILS_COLUMN)
-    private String userDetails;
+    public String userDetails;
     @DatabaseField(columnName = PHOTO_PATH_COLUMN)
-    private String photoPath;
+    public String photoPath;
     @DatabaseField(columnName = LONGITUDE_COLUMN)
-    private double longitude;
+    public double longitude;
     @DatabaseField(columnName = LATITUDE_COLUMN)
-    private double latitude;
+    public double latitude;
 
     public String getActionTaken() {
         return actionTaken;

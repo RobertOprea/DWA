@@ -6,9 +6,7 @@ import com.dwa.rybridge.ryebridgedwa.presenter.MainPresenter;
 import com.dwa.rybridge.ryebridgedwa.presenter.implementations.MainPresenterImpl;
 import com.dwa.rybridge.ryebridgedwa.ui.view.MainView;
 
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
