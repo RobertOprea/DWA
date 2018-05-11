@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RBridge</string>
+    <string name="app_name">Ryebridge</string>
 
     <!--Login screen strings-->
     <string name="email">E-Mail</string>
