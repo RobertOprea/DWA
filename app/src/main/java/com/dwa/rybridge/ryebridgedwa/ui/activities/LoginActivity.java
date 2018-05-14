@@ -1,9 +1,11 @@
 package com.dwa.rybridge.ryebridgedwa.ui.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -56,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @OnClick(R.id.sign_in_link_textview)
     public void onLoginClicked() {
+        closeKeyboard();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
@@ -64,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @OnClick(R.id.forgot_password_link_textview)
     public void onForgotPasswordClicked() {
+        closeKeyboard();
         loginPresenter.onForgotPasswordClicked(emailEditText.getText().toString());
     }
 
@@ -95,5 +99,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void showLoadingView() {
         loadingView.setVisibility(View.VISIBLE);
+    }
+
+    private void closeKeyboard() {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(emailEditText.getWindowToken(), 0);
     }
 }

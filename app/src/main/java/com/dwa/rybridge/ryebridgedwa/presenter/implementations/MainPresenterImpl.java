@@ -88,7 +88,7 @@ public class MainPresenterImpl implements MainPresenter {
                 }
             });
         } else {
-            view.hideUploadAllView();
+            view.hideLoadingView();
             reportRepository.clear();
             view.hideUploadAllView();
         }

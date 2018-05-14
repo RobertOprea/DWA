@@ -16,6 +16,7 @@ import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.ACCEPTED
 import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.INDUCTION_RECEIVED;
 import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.PRIVACY_POLICY;
 import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.REPORTS;
+import static com.dwa.rybridge.ryebridgedwa.constants.FirebaseConstants.USER_DATA;
 
 public class PoliciesPresenterImpl implements PoliciesPresenter {
 
@@ -46,7 +47,7 @@ public class PoliciesPresenterImpl implements PoliciesPresenter {
     @Override
     public void onNextButtonClicked() {
         String userId = firebaseAuth.getUid();
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child(REPORTS).child(userId);
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child(USER_DATA).child(userId);
         databaseReference.child(ACCEPTED_TC).setValue(true);
         databaseReference.child(INDUCTION_RECEIVED).setValue(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
